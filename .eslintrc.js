@@ -20,6 +20,8 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn'
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error']
   }
 }
