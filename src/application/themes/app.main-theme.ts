@@ -1,10 +1,10 @@
 import { createTheme } from '@material-ui/core'
-import { blue, cyan } from '@material-ui/core/colors'
+import { blue, lightBlue } from '@material-ui/core/colors'
 
 export const AppMainTheme = createTheme({
   palette: {
     primary: blue,
-    secondary: cyan
+    secondary: lightBlue
     // text: {
     //   primary: 'rgba(0, 0, 0, 0.87)',
     //   secondary: '#00e676'
