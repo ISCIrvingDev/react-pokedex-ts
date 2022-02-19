@@ -1,10 +1,14 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Container, ThemeProvider } from '@material-ui/core'
+import { AppMainTheme } from '@app/themes/app.main-theme'
 
 function App () {
   return (
-    <Router>
-    </Router>
+    <ThemeProvider theme={AppMainTheme}>
+      <Container maxWidth={false}>
+        Contenido
+      </Container>
+    </ThemeProvider>
   )
 }
 
