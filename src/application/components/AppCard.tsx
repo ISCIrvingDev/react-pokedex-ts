@@ -47,7 +47,7 @@ export const AppCard: React.FC<IProps> = ({ img, title, description, link, actio
           title="Contemplative Reptile"
         />
         <CardContent color='red'>
-          <Typography className={classes.root} component="h2" variant="h6" gutterBottom>
+          <Typography className={classes.root} component="h2" variant="h6" gutterBottom align='center'>
             {title}
           </Typography>
           {/* <Typography className={classes.root} variant="body2" color="textSecondary" component="p">

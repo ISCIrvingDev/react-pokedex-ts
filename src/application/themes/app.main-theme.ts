@@ -19,5 +19,6 @@ export const AppColors = {
 export const AppGradientColors = {
   terminal: 'linear-gradient(to left, #000000, #0f9b0f)',
   midnightCity: 'linear-gradient(to left, #232526, #414345)',
-  coolBlues: 'linear-gradient(to right, #2193b0, #6dd5ed)'
+  coolBlues: 'linear-gradient(to right, #2193b0, #6dd5ed)',
+  coolBlues2: 'linear-gradient(to left, #2193b0, #6dd5ed)'
 }
