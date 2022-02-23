@@ -11,10 +11,12 @@ const useStyles = makeStyles((theme) => ({
 
 interface IProps {
   initRowsPerPage: number; // The available values are 10, 25, 50, 100
-  setInitRowsPerPage: (initRowsPerPage: number) => void
+  emitRowsPerPage: (initRowsPerPage: number) => void;
+  count: number;
+  emitPage: (newPage: number) => void;
 }
 
-export const Pagination: React.FC<IProps> = ({ initRowsPerPage, setInitRowsPerPage }) => {
+export const Pagination: React.FC<IProps> = ({ initRowsPerPage, emitRowsPerPage, count, emitPage }) => {
   const classes = useStyles()
 
   const [page, setPage] = useState(0)
@@ -22,6 +24,7 @@ export const Pagination: React.FC<IProps> = ({ initRowsPerPage, setInitRowsPerPa
 
   const handleChangePage = (event: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setPage(newPage)
+    emitPage(newPage)
   }
 
   const handleChangeRowsPerPage = (
@@ -31,14 +34,14 @@ export const Pagination: React.FC<IProps> = ({ initRowsPerPage, setInitRowsPerPa
 
     setRowsPerPage(newRowsPerPage)
     setPage(0)
-    setInitRowsPerPage(newRowsPerPage)
+    emitRowsPerPage(newRowsPerPage)
   }
 
   return (
     <TablePagination
       className={classes.root}
       component="div"
-      count={100}
+      count={count}
       page={page}
       onPageChange={handleChangePage}
       rowsPerPage={rowsPerPage}

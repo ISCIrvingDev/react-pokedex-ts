@@ -1,8 +1,8 @@
 import { AppPokeApiGateway } from '@app/api-gateways/app.poke-api-gateway'
 // import { AppPokeSpritesApiGateway } from '@app/api-gateways/app.poke-sprites-api-gateway'
-import { IDtoPokemon, IDtoPokemonList } from './pokemon.dto'
+import { IDtoPokemonList } from './pokemon.dto'
 
-export async function getPokemons ({ limit = 0 }): Promise<IDtoPokemon[]> {
+export async function getPokemons ({ limit = 0 }): Promise<IDtoPokemonList> {
   const query = limit > 0 ? `?limit=${limit}` : ''
   const pokemonList = await AppPokeApiGateway.get<IDtoPokemonList>(query)
 
@@ -18,13 +18,30 @@ export async function getPokemons ({ limit = 0 }): Promise<IDtoPokemon[]> {
   // )
 
   // Obtenemos la imagen como un String (un link)
-  const res = pokemonList.data.results.map((pokemon, index) => {
-    index++
+  pokemonList.data.results.forEach((pokemon) => {
+    // @ts-ignore: Object is possibly 'null'
+    const id = pokemon.url.match(/\d+/g)[1]
 
-    pokemon.img = `${process.env.REACT_APP_POKE_SPRITES_API_GATEWAY}/${index}.png`
+    pokemon.img = `${process.env.REACT_APP_POKE_SPRITES_API_GATEWAY}/${id}.png`
 
     return pokemon
   })
 
-  return res
+  return pokemonList.data
+}
+
+export async function getNextPrevPokemons ({ nextPrev = '' }): Promise<IDtoPokemonList> {
+  const query = `?${nextPrev.split('?')[1]}`
+  const pokemonList = await AppPokeApiGateway.get<IDtoPokemonList>(query)
+
+  pokemonList.data.results.forEach((pokemon) => {
+    // @ts-ignore: Object is possibly 'null'
+    const id = pokemon.url.match(/\d+/g)[1] // x.match(/\d+/g)  ->  Get only numbers
+
+    pokemon.img = `${process.env.REACT_APP_POKE_SPRITES_API_GATEWAY}/${id}.png`
+
+    return pokemon
+  })
+
+  return pokemonList.data
 }
