@@ -7,7 +7,7 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@app': joinSrc('application'),
-      '@modules': joinSrc('modules')
+      '@mod': joinSrc('modules')
     }
   }
 }
