@@ -1,12 +1,22 @@
 import React, { useEffect, useState/*, lazy, Suspense */ } from 'react'
+import { Link } from 'react-router-dom'
 import { CircularProgress, Grid } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import { getNextPrevPokemons, getPokemons } from './repository'
 import { IDtoPokemonList } from './pokemon.dto'
-import { AppCard } from '@app/components/AppCard'
-// const AppCard = lazy(() => import('@app/components/AppCard'))
+// const PokemonCard = lazy(() => import('@app/components/PokemonCard'))
+import { PokemonCard } from './components/PokemonCard'
 import { Pagination } from './components/Pagination'
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    textDecoration: 'none'
+  }
+}))
+
 export const ViewPokedex: React.FC<{}> = () => {
+  const classes = useStyles()
+
   const [pokemons, setPokemons] = useState<IDtoPokemonList>({ count: 0, results: [] })
   const [limit, setLimit] = useState(25)
   // let totalPages = 0
@@ -28,10 +38,12 @@ export const ViewPokedex: React.FC<{}> = () => {
         pokemons.results.length > 0
           ? <Grid container spacing={3}>
             {
-              pokemons.results.map((pokemon, i) =>
-                <Grid key={i} item xs={12} sm={2}>
+              pokemons.results.map(pokemon =>
+                <Grid key={pokemon.id} item xs={12} sm={2}>
                   {/* <Suspense fallback={<div>...</div>}> */}
-                    <AppCard img={pokemon.img || ''} title={pokemon.name} description={pokemon.url}/>
+                  <Link to={`/pokemon/${pokemon.id}`} className={classes.root}>
+                      <PokemonCard img={pokemon.img || ''} title={pokemon.name} description={pokemon.url}/>
+                    </Link>
                   {/* </Suspense> */}
                 </Grid>
               )

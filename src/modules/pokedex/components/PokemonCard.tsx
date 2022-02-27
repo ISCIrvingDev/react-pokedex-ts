@@ -31,8 +31,8 @@ interface IActions<T> {
   action: () => T
 }
 
-// export const AppCard: React.FC<IProps> = (props: IProps) => {
-export const AppCard: React.FC<IProps> = ({ img, title, description, link, actions }) => {
+// export const PokemonCard: React.FC<IProps> = (props: IProps) => {
+export const PokemonCard: React.FC<IProps> = ({ img, title, description, link, actions }) => {
   const classes = useStyles()
   // const { name } = props
 
@@ -41,12 +41,11 @@ export const AppCard: React.FC<IProps> = ({ img, title, description, link, actio
       <CardActionArea>
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
-          height="140"
+          alt={title}
           image={img}
-          title="Contemplative Reptile"
+          title={title}
         />
-        <CardContent color='red'>
+        <CardContent>
           <Typography className={classes.root} component="h2" variant="h6" gutterBottom align='center'>
             {title}
           </Typography>
@@ -67,4 +66,4 @@ export const AppCard: React.FC<IProps> = ({ img, title, description, link, actio
   )
 }
 
-// export default AppCard
+// export default PokemonCard

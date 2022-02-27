@@ -1,9 +1,10 @@
 import React from 'react'
 import { Container, ThemeProvider, Toolbar } from '@material-ui/core'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { AppNavbar } from './application/components/AppNavbar'
-import { ViewPokedex } from './modules/pokedex/ViewPokedex'
+import { AppNavbar } from '@app/components/AppNavbar'
+import { ViewPokedex } from '@mod/pokedex/ViewPokedex'
 import { AppMainTheme } from '@app/themes/app.main-theme'
+import { ViewPokemonDetails } from '@mod/pokemon-details/ViewPokemonDetails'
 
 function App () {
   return (
@@ -14,7 +15,8 @@ function App () {
 
           <Toolbar />
 
-          <Route path='/' component={ViewPokedex} />
+          <Route exact path='/' component={ViewPokedex} />
+          <Route exact path='/pokemon/:id' component={ViewPokemonDetails} />
         </Router>
       </Container>
     </ThemeProvider>
