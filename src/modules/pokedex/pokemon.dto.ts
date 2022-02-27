@@ -9,4 +9,5 @@ export interface IDtoPokemon {
   name: string;
   url: string;
   img?: string;
+  id?: number;
 }

@@ -20,9 +20,9 @@ export async function getPokemons ({ limit = 0 }): Promise<IDtoPokemonList> {
   // Obtenemos la imagen como un String (un link)
   pokemonList.data.results.forEach((pokemon) => {
     // @ts-ignore: Object is possibly 'null'
-    const id = pokemon.url.match(/\d+/g)[1]
+    pokemon.id = pokemon.url.match(/\d+/g)[1] // x.match(/\d+/g)  ->  Get only numbers
 
-    pokemon.img = `${process.env.REACT_APP_POKE_SPRITES_API_GATEWAY}/${id}.png`
+    pokemon.img = `${process.env.REACT_APP_POKE_SPRITES_API_GATEWAY}/${pokemon.id}.png`
 
     return pokemon
   })
@@ -35,10 +35,12 @@ export async function getNextPrevPokemons ({ nextPrev = '' }): Promise<IDtoPokem
   const pokemonList = await AppPokeApiGateway.get<IDtoPokemonList>(query)
 
   pokemonList.data.results.forEach((pokemon) => {
-    // @ts-ignore: Object is possibly 'null'
-    const id = pokemon.url.match(/\d+/g)[1] // x.match(/\d+/g)  ->  Get only numbers
+    if (!pokemon.id) {
+      // @ts-ignore: Object is possibly 'null'
+      pokemon.id = pokemon.url.match(/\d+/g)[1]
+    }
 
-    pokemon.img = `${process.env.REACT_APP_POKE_SPRITES_API_GATEWAY}/${id}.png`
+    pokemon.img = `${process.env.REACT_APP_POKE_SPRITES_API_GATEWAY}/${pokemon.id}.png`
 
     return pokemon
   })
