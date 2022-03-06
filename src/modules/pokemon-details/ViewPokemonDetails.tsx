@@ -50,7 +50,6 @@ export const ViewPokemonDetails: React.FC<RouteComponentProps<IProps>> = ({ hist
     getPokemonDetails({ id }).then(
       res => {
         setPokemonDetails(res)
-        setTimeout(() => console.log('Res: ', pokemonDetails), 10000)
       }
       // err => console.log('Error: ', err)
     )

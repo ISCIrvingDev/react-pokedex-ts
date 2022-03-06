@@ -41,7 +41,7 @@ export const ViewPokedex: React.FC<{}> = () => {
               pokemons.results.map(pokemon =>
                 <Grid key={pokemon.id} item xs={12} sm={2}>
                   {/* <Suspense fallback={<div>...</div>}> */}
-                  <Link to={`/pokemon/${pokemon.id}`} className={classes.root}>
+                    <Link to={`/pokemon/${pokemon.id}`} className={classes.root}>
                       <PokemonCard img={pokemon.img || ''} title={pokemon.name} description={pokemon.url}/>
                     </Link>
                   {/* </Suspense> */}
