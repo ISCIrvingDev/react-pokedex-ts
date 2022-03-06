@@ -24,9 +24,19 @@ export const AppNavbar: React.FC<{}> = () => {
           <img src={process.env.REACT_APP_FRAMEWORK_ICON} alt="React" width="24" height="24" />
         </Typography>
 
-        <Typography>
+        <Typography style={{ marginRight: '1rem' }}>
           <Link to='/' className={classes.links}>
             Pokedex
+          </Link>
+        </Typography>
+
+        <Typography style={{ marginRight: '1rem' }}>
+          |
+        </Typography>
+
+        <Typography>
+          <Link to='/about' className={classes.links}>
+            About
           </Link>
         </Typography>
       </Toolbar>

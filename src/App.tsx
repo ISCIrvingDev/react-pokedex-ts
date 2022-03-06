@@ -5,6 +5,7 @@ import { AppNavbar } from '@app/components/AppNavbar'
 import { ViewPokedex } from '@mod/pokedex/ViewPokedex'
 import { AppMainTheme } from '@app/themes/app.main-theme'
 import { ViewPokemonDetails } from '@mod/pokemon-details/ViewPokemonDetails'
+import { ViewAbout } from '@mod/about/ViewAbout'
 
 function App () {
   return (
@@ -17,6 +18,7 @@ function App () {
 
           <Route exact path='/' component={ViewPokedex} />
           <Route exact path='/pokemon/:id' component={ViewPokemonDetails} />
+          <Route exact path='/about' component={ViewAbout} />
         </Router>
       </Container>
     </ThemeProvider>
