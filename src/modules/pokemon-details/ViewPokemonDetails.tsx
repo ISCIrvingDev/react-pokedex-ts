@@ -92,7 +92,7 @@ export const ViewPokemonDetails: React.FC<RouteComponentProps<IProps>> = ({ hist
             {/* <Typography className={classes.root} component="p">
               { pokemonDetails.types.map(type => type.type.name).join(', ') }
             </Typography> */}
-            <Typography component="p" className={`${classes.root} ${classes.typesAbilities}`}>
+            <Typography component="div" className={`${classes.root} ${classes.typesAbilities}`}>
               <List component="nav">
                 {
                   pokemonDetails.types.map((type, i) => {
@@ -115,7 +115,7 @@ export const ViewPokemonDetails: React.FC<RouteComponentProps<IProps>> = ({ hist
             {/* <Typography className={classes.root} component="p">
               { pokemonDetails.abilities.map(ability => ability.ability.name).join(', ') }
             </Typography> */}
-            <Typography component="p" className={`${classes.root} ${classes.typesAbilities}`}>
+            <Typography component="div" className={`${classes.root} ${classes.typesAbilities}`}>
               <List component="nav">
                 {
                   pokemonDetails.abilities.map((ability, i) => {
@@ -159,7 +159,7 @@ export const ViewPokemonDetails: React.FC<RouteComponentProps<IProps>> = ({ hist
           <Typography component="h2" variant="h5" align='center'>
             Moves
           </Typography>
-          <Typography component="p" className={`${classes.root} ${classes.moves}`}>
+          <Typography component="div" className={`${classes.root} ${classes.moves}`}>
             <List component="nav">
             {
               pokemonDetails.moves.map((move, i) => {
