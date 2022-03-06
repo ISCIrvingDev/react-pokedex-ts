@@ -21,7 +21,8 @@ module.exports = {
   ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
-    'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error']
+    'no-constant-condition': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+    'no-use-before-define': 'off', // Pare el import de React
+    '@typescript-eslint/no-use-before-define': ['error'] // Pare el import de React
   }
 }
