@@ -9,6 +9,10 @@ export const AppMainTheme = createTheme({
     //   primary: 'rgba(0, 0, 0, 0.87)',
     //   secondary: '#00e676'
     // }
+  },
+  typography: {
+    // fontFamily: 'Source Sans Pro'
+    fontFamily: 'Helvetica, Roboto, Arial, sans-serif'
   }
 })
 
